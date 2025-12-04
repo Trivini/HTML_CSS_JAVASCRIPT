@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var deviceName = "Sakshi's Phone";
+
+        var price = 20000;
+
+        var isActive = true;
+
+        console.log(isActive);
+
+        console.log(typeof isActive);
+
+        var meeting1 = "Java";
+        var meeting2 = "Python";
+
+        var meeting3 = "React";
+
+        var meeting4 = "JavaScript";
+
+        // Array datatype
+
+        var meeting = ["java","Python","React","JavaScript"];
+
+        console.log(meeting);
+
+        console.log(meeting[3]);
+
+        meeting[2] = "CPP";
+
+        console.log(meeting) ;
+
+        meeting.push("Typescript");
+
+        console.log(meeting);
+
+        //Object datatype
+
+        var address = {
+             addressLine1 : '36B, Bhagyashree park',
+             addressLine2 : 'Near airport',
+             area : 'Majarewadi',
+             city : 'Solapur',
+             pincode : 412224
+        };
+
+        console.log(address);
+
+        console.log(address.pincode);
+
+        console.log(address["city"]);
+
+        address.state = "Maharashtra";
+
+        console.log(address["state"]);
+
+        var customerInfo={
+            id : 1,
+            name :" Sakshi",
+            email : "sakshi@zohomail.com",
+            address : {
+                addressLine1 : '36B, Bhagyashree park',
+                addressLine2 : 'Near airport',
+                area : 'Majarewadi',
+                city : 'Solapur',
+                pincode : 412224
+        },
+            course : "Java Full Stack",
+            technology:{
+                frontend :["HTML","CSS","Javascript","Bootstrap"],
+                Backend :["Core Java","Advanced java","Spring","Spring boot","Microservices"]
+            },
+            instructor : "Manideepp's Sir"
+        };
+
+        console.log(customerInfo);
+
+        console.log(customerInfo.address.addressLine1);
+
+        console.log(customerInfo.technology.frontend[0]);
+
+        //Array of object
+        var meeting = [
+            {
+                id : 101,
+                name : "Sakshi Shinde",
+                isStudent : true
+            },
+            {
+                id : 102,
+                name : "Pradnya Shinde",
+                isStudent : true
+            },
+            {
+                id : 103,
+                name : "Shraddha Shinde",
+                isStudent : true
+            }
+        ];
+
+        console.log()
+        console.log(meeting[2])
+
+
+    </script>
+    
+</body>
+</html>
