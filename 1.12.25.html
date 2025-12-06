@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template Literals</Template></title>
+</head>
+<body>
+    <ul id = "technologies-list">
+        <!-- <li>JavaScript</li>
+        <li>Python</li>
+        <li>C++</li> -->  
+    </ul>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>City</th>
+        </tr>
+        </thead>
+
+        <tbody id = "user-table">
+        <!-- <tr>
+            <td>Abhinaya</td>
+            <td>Hydrabad</td>
+        </tr> -->
+        </tbody>
+    </table>
+
+    
+    <script>
+        var firstname = "Pavani";
+        var lastname = "B";
+
+        var fullname = firstname+" "+lastname;
+
+        console.log(fullname);
+
+        //Template Literals
+
+        //Good Morning Pavani,
+
+        // How are you?
+
+        // Regards
+        // Lokesh
+
+        var greeting = `Welcome ${lastname} ${firstname}`; 
+        console.log(greeting);
+
+        var technologiesList = document.getElementById("technologies-list");
+        const technologies = [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "React.js",
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "MySQL",
+        "Java",
+        "Python",
+        "C",
+        "C++",
+        "AWS Cloud",
+        "Git",
+        "GitHub",
+        "Docker",
+        "Kubernetes",
+        "Figma",
+        "Tailwind CSS",
+        "Bootstrap"
+        ];
+
+        let str = '';
+
+        for(let i = 0 ; i < technologies.length ; i++){
+            //str = str + `<li>${technologies[i]}</li>`;
+            str = str + `<li>` + technologies[i] + `</li>`;
+        }
+
+        console.log(str);
+
+        technologiesList.innerHTML = str;
+
+        const users = [
+        {
+            name: "Sakshi Shinde",
+            city: "Sangli"
+        },
+        {
+            name: "Aarav Patil",
+            city: "Pune"
+        },
+        {
+            name: "Riya Deshmukh",
+            city: "Mumbai"
+        },
+        {
+            name: "Karan Jadhav",
+            city: "Kolhapur"
+        },
+        {
+            name: "Muskan Shaikh",
+            city: "Nashik"
+        }
+        ];
+
+
+        var userTable = document.getElementById("user-table");
+
+        let str2 = '';
+
+        for(let i = 0 ;i <users.length ; i++){
+            // str2 = str2 + `<tr><td>` + users[i].name + `</td><td>` + users[i].city + `</td></tr>`;
+            str2 += `
+
+                <tr>
+                    <td>${users[i].name}</td>
+                    <td>${users[i].city}</td>
+                </tr>
+            `
+
+
+
+
+            
+        }
+
+        console.log(str2);
+
+       var usersList = document.getElementById("user-table").innerHTML = str2; 
+
+
+
+
+
+
+    </script>
+</body>
+</html>
