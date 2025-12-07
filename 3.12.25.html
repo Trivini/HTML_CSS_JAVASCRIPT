@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object and Date methods</title>
+</head>
+<body>
+    <script>
+        const acProduct = {
+                id: 101,
+                brand: "Daikin",
+                model: "FTKF50TV",
+                type: "Split Inverter AC",
+                ton: 1.5,
+                starRating: 5,
+                price: 42999,
+                color: "White",
+                noiseLevel: "35 dB",
+                features: [
+                    "Inverter Technology",
+                    "Copper Condenser",
+                    "PM2.5 Filter",
+                    "Stabilizer Free Operation",
+                    "Power Chill Mode"
+                ],
+                warranty: {
+                    product: "1 Year",
+                    condenser: "1 Year",
+                    compressor: "10 Years"
+                },
+                dimensions: {
+                    indoorUnit: { width: "88 cm", height: "29 cm", depth: "21 cm" },
+                    outdoorUnit: { width: "83 cm", height: "55 cm", depth: "30 cm" }
+                }
+            };
+
+            console.log(acProduct.features[0]);
+
+            const productKeys = Object.keys(acProduct);
+
+            console.log(productKeys);
+
+            const productValues = Object.values(acProduct);
+
+            console.log(productValues);
+
+            const productEnteries = Object.entries(acProduct);
+
+
+            console.log(productEnteries);
+
+            delete acProduct.brand;
+            console.log(acProduct);
+
+
+
+            const dbConfig = {
+                    host: "localhost",
+                    user: "admin",
+                    password: "securePass@123",
+                    database: "companyDB",
+                    port: 5432,
+                    dialect: "postgres",
+                    pool: {
+                        max: 5,
+                        min: 0,
+                        acquire: 30000,
+                        idle: 10000
+                    }
+                };
+
+            const freezeConfig = Object.freeze(dbConfig);
+            
+            freezeConfig.host = '127.1.1.1';
+
+            freezeConfig.user = "Client";
+
+            
+
+            console.log(freezeConfig);
+
+
+
+            //Date Methods
+
+
+            const currentTimestamp = new Date();
+
+            console.log(currentTimestamp);
+
+            console.log(currentTimestamp.toISOString());
+
+            const currentTimestamp2 = "2025-12-07T04:36:28.412Z";
+
+            const currentDateObj = new Date(currentTimestamp2);
+
+            console.log(currentDateObj.getDate());
+
+            console.log(currentDateObj.getMonth());
+
+            console.log(currentDateObj.getHours());
+
+            console.log(currentDateObj.getDay());
+
+            console.log(currentDateObj.getMinutes());
+
+            console.log(currentDateObj.getSeconds());
+
+            const days = ["Sunday","Monday","Tuesday","Wednesday","Thrusday","Friday","Saturaday"];
+
+            console.log(days[currentDateObj.getDay()]);
+
+            const dateStr = `${currentDateObj.getDate()}/${currentDateObj.getMonth() + 1}/${currentDateObj.getFullYear()}`;
+
+            console.log(dateStr);
+
+            function timeAgo(date) {
+                const now = new Date();
+                const seconds = Math.floor((now - new Date(date)) / 1000);
+
+                const intervals = {
+                    year: 31536000,
+                    month: 2592000,
+                    week: 604800,
+                    day: 86400,
+                    hour: 3600,
+                    minute: 60
+                };
+
+                for (const [unit, value] of Object.entries(intervals)) {
+                    const amount = Math.floor(seconds / value);
+                    if (amount >= 1) {
+                        return amount === 1 ? `${amount} ${unit} ago` : `${amount} ${unit}s ago`;
+                    }
+                }
+
+                return "Just now";
+            }
+
+            console.log(timeAgo("2025-12-07T05:02:43.505Z"));
+
+
+
+
+
+    </script>
+</body>
+</html>
