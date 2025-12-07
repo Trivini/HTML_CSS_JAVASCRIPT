@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const mobileNames = [
+            "Google Pixel 10 Pro",
+            "Google Pixel 10",
+            "iPhone 15",
+            "iPhone 14",
+            "iPhone 13",
+            "Samsung Galaxy S24 Ultra"
+            
+            ];
+
+            mobileNames.push("Vivo X100");
+
+            console.log(mobileNames);
+
+            mobileNames.pop("Vivo X100");
+
+            console.log(mobileNames);
+
+            mobileNames.splice(1, 1);
+
+            console.log(mobileNames);
+
+            mobileNames.splice(2, 2, "Samsung Galaxy S24");
+            console.log(mobileNames);
+
+            mobileNames.splice(2, 0, 'Nothing Phone 2');
+            console.log(mobileNames);
+
+            const officeMonitors = [
+                "Dell UltraSharp U2723QE",
+                "HP P24h G4",
+                "Lenovo ThinkVision T27h",
+                "ASUS ProArt PA278QV",
+                "Samsung S24R650"
+                ];
+
+
+            const gamingMonitors = [
+                "LG UltraGear 27GN950",
+                "Samsung Odyssey G7",
+                "Acer Predator XB273U",
+                "ASUS ROG Strix XG27AQ",
+                "MSI Optix MAG274QRF"
+                ];
+
+            const budgetMonitors = [
+                "Acer HA220Q",
+                "LG 22MP68VQ",
+                "Samsung LF22T350",
+                "BenQ GW2280",
+                "HP 22fw"
+                ];
+
+            const allMonitors = gamingMonitors.concat(officeMonitors, budgetMonitors);
+
+            console.log(allMonitors);
+
+            const sortedAllMonitors = allMonitors.sort();
+
+            console.log(sortedAllMonitors);
+
+            const isMonitorExist = allMonitors.includes("MSI Optix MAG274QRF");
+
+            console.log(isMonitorExist);
+
+            const students = [
+                {
+                    name: "Sakshi Shinde",
+                    age: 21,
+                    city: "Sangli",
+                    course: "Computer Science"
+                },
+                {
+                    name: "Aarav Patil",
+                    age: 20,
+                    city: "Pune",
+                    course: "Information Technology"
+                },
+                {
+                    name: "Riya Deshmukh",
+                    age: 22,
+                    city: "Mumbai",
+                    course: "Electronics"
+                },
+                {
+                    name: "Karan Jadhav",
+                    age: 21,
+                    city: "Kolhapur",
+                    course: "Mechanical"
+
+                }
+
+            ];
+
+            const sortedStudents = students.sort(function(a, b){
+                if(a.city > b.city){
+                    return 1;
+                }else if(a.city < b.city){
+                    return -1;
+                }else{
+                    return 0;
+                }
+
+            });
+
+            console.log(sortedStudents);
+
+            function sortData(parameter){
+                const sortedStudents = students.sort(function(a, b){
+                if(a[parameter]> b[parameter]){
+                    return 1;
+                }else if(a[parameter] < b[parameter]){
+                    return -1;
+                }else{
+                    return 0;
+                }
+
+                });
+                return sortedStudents;
+
+            }
+
+            const _sortedStudents = sortData("name");
+
+            console.log(_sortedStudents);
+
+            const str1 = "Used to pass value from function defintion to function call.";
+            const str2 = new String("Used to pass value from function defintion to function call.");
+            console.log(str1.length);
+
+            console.log(str1.indexOf("function"));
+            console.log(str1.lastIndexOf("function"));
+
+            console.log(str1.slice(5,10));
+
+            console.log(str1.substr(5,5));
+
+            console.log(str1.toUpperCase());
+            console.log(str1.toLowerCase());
+
+
+            const address = {
+                houseNo: "123",
+                street: "MG Road",
+                city: "Pune",
+                state: "Maharashtra",
+                postalCode: "411001",
+                country: "India"
+            };
+
+            const addressStr = address.houseNo.concat(', ',address.street,', ',address.city,', ',address.state,', ',address.postalCode,', ',address.country);
+            console.log(addressStr);
+
+            const mobileNo = "3456783216";
+
+            //3456 783 216
+
+            const formattedMobileNo = `+91 ${mobileNo.charAt(0)}${mobileNo.charAt(1)}${mobileNo.charAt(2)}${mobileNo.charAt(3)} ${mobileNo.charAt(4)}${mobileNo.charAt(5)}${mobileNo.charAt(6)} ${mobileNo.charAt(7)}${mobileNo.charAt(8)}${mobileNo.charAt(9)}`; 
+
+            console.log(formattedMobileNo);
+
+
+
+            
+
+    </script>
+    
+</body>
+</html>
