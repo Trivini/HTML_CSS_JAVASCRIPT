@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" >
+    <style>
+         body {
+            font-family: "Nunito", sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        h2 {
+            text-align: center;
+        }
+        .header {
+            border: 1px solid black;
+            padding: 10px;
+        }
+
+        #container {
+            overflow-x: auto;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 auto;
+            font-size: 14px;
+        }
+
+        thead {
+            background-color: #4a90e2;
+            color: white;
+        }
+
+        thead th {
+            padding: 12px 15px;
+            text-align: left;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        tbody tr {
+            border-bottom: 1px solid #e0e0e0;
+            transition: background-color 0.2s ease;
+        }
+
+        tbody tr:hover {
+            background-color: #f0f7ff;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #fafafa;
+        }
+
+        tbody tr:nth-child(even):hover {
+            background-color: #f0f7ff;
+        }
+
+        tbody td {
+            padding: 12px 15px;
+            color: #333;
+        }
+
+        tbody tr:last-child {
+            border-bottom: none;
+        }
+        .active {
+            background-color: green;
+            color: white;
+            border-radius: 20px;
+            padding: 5px 10px;
+        }
+        .inactive {
+            background-color: red;
+            color: white;
+            border-radius: 20px;
+            padding: 5px 10px;
+        }
+        .view-btn {
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 16px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.1s ease;
+            font-family: "Nunito", sans-serif;
+        }
+        .view-btn:hover {
+            background-color: #357abd;
+            transform: translateY(-1px);
+        }
+        .view-btn:active {
+            transform: translateY(0);
+            background-color: #2a5f8f;
+        }
+        .sort-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 6px;
+            border: 1px solid #e0e0e0;
+        }
+        .sort-label {
+            font-weight: 600;
+            color: #333;
+            font-size: 14px;
+            margin: 0;
+        }
+        .sort-select {
+            padding: 10px 15px;
+            font-size: 14px;
+            font-family: "Nunito", sans-serif;
+            border: 2px solid #4a90e2;
+            border-radius: 6px;
+            background-color: white;
+            color: #333;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 180px;
+            outline: none;
+        }
+        .sort-select:hover {
+            border-color: #357abd;
+            box-shadow: 0 2px 4px rgba(74, 144, 226, 0.2);
+        }
+        .sort-select:focus {
+            border-color: #357abd;
+            box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+        }
+        .sort-select option {
+            padding: 10px;
+            font-family: "Nunito", sans-serif;
+        }
+        h2{
+            text-align: center;
+        }
+        .active{
+            background-color: green ;
+            color: white;
+            border-radius: 20Px;
+            padding:  5px 10px;
+        }
+        .inactive{
+            background-color: red ;
+            color: white;
+            border-radius: 20Px;
+            padding:  5px 10px;
+        }
+        .view-btn {
+        background-color: #4a90e2;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        padding: 8px 16px;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.1s ease;
+        font-family: "Nunito", sans-serif;
+    }
+        .sort-container {
+        display: flex;
+        align-items: center;
+        gap: 10px; /* space between label and select */
+        margin: 20px 0;
+        font-family: 'Nunito', sans-serif;
+            }
+
+            /* Label styling */
+            .sort-container label {
+                font-weight: 600;
+                color: #333;
+                font-size: 16px;
+            }
+
+            /* Select dropdown styling */
+            .sort-container select {
+                padding: 8px 12px;
+                border: 1px solid #ccc;
+                border-radius: 8px;
+                background-color: #f9f9f9;
+                font-size: 14px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+
+            /* Hover effect */
+            .sort-container select:hover {
+                border-color: #007bff;
+                background-color: #fff;
+            }
+
+            /* Focus effect */
+            .sort-container select:focus {
+                outline: none;
+                border-color: #0056b3;
+                box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+            }
+    </style>
+</head>
+<body>
+    
+        <div id = 'container'>
+            <h2>Employees</h2>
+            <div class="sort-container">
+                <label>Sort by Name :</label>
+                <select onchange="sortByName()" id="sortByNameSelect">
+                    <option>Select</option>
+                    <option>Ascending Order</option>
+                    <option>Decending Order</option>
+                </select>
+            </div>
+            <table>
+                <thead>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Role</th>
+                    <th>Department</th>
+                    <th>Email</th>
+                    <th>PhoneNo</th>
+                    <th>Salary</th>
+                    <th>Location</th>
+                    <th>Status</th>
+                    <th>createdAt</th>
+                    <th>joinedAt</th>
+                </thead>
+                <tbody id = "employees-container">
+
+                </tbody>
+            </table>
+
+        </div>
+
+    <script>
+
+        // const container = document.getElementById('container');
+        // const header1 = document.createElement('h1');
+
+        // header1.innerHTML = 'Create Element Function...';
+
+        // header1.style.color = 'blueviolet';
+
+        // header1.classList.add('header');
+
+        // console.log(header1);
+
+        // container.appendChild(header1);
+
+
+    const employees = [
+            {
+                id: 1,
+                name: "John Doe",
+                role: "Software Engineer",
+                department: "IT",
+                email: "john.doe@example.com",
+                phone: "+1-555-123-4567",
+                salary: 75000,
+                location: "New York",
+                status: "Active",
+                createdAt: "2024-01-12T10:30:00Z",
+                joinedAt: "2022-04-10"
+            },
+            {
+                id: 2,
+                name: "Sarah Smith",
+                role: "Project Manager",
+                department: "Operations",
+                email: "sarah.smith@example.com",
+                phone: "+1-555-234-5678",
+                salary: 90000,
+                location: "Chicago",
+                status: "Active",
+                createdAt: "2023-03-04T09:15:00Z",
+                joinedAt: "2021-11-18"
+            },
+            {
+                id: 3,
+                name: "Michael Johnson",
+                role: "Backend Developer",
+                department: "IT",
+                email: "michael.j@example.com",
+                phone: "+1-555-345-6789",
+                salary: 65000,
+                location: "San Francisco",
+                status: "On Leave",
+                createdAt: "2024-07-21T14:45:00Z",
+                joinedAt: "2023-01-10"
+            },
+            {
+                id: 4,
+                name: "Amit Desai",
+                role: "UI/UX Designer",
+                department: "Design",
+                email: "amit@example.com",
+                phone: "+91-9876543210",
+                salary: 42000,
+                location: "Mumbai",
+                status: "Active",
+                createdAt: new Date().toISOString(),
+                joinedAt: "2022-09-15"
+            },
+            {
+                id: 5,
+                name: "Neha Joshi",
+                role: "Backend Developer",
+                department: "IT",
+                email: "neha@example.com",
+                phone: "+91-9988776655",
+                salary: 52000,
+                location: "Pune",
+                status: "Active",
+                createdAt: new Date().toISOString(),
+                joinedAt: "2023-06-20"
+            },
+            {
+                id: 6,
+                name: "Rohan Patil",
+                role: "Frontend Developer",
+                department: "IT",
+                email: "rohan.patil@example.com",
+                phone: "+91-9876541230",
+                salary: 58000,
+                location: "Bangalore",
+                status: "Active",
+                createdAt: new Date().toISOString(),
+                joinedAt: "2022-02-15"
+            },
+            {
+                id: 7,
+                name: "Priya Sharma",
+                role: "HR Manager",
+                department: "Human Resources",
+                email: "priya.sharma@example.com",
+                phone: "+91-9123456780",
+                salary: 65000,
+                location: "Delhi",
+                status: "Active",
+                createdAt: new Date().toISOString(),
+                joinedAt: "2021-10-05"
+            },
+            {
+                id: 8,
+                name: "Aditya Mehra",
+                role: "DevOps Engineer",
+                department: "IT",
+                email: "aditya.mehra@example.com",
+                phone: "+91-9988123411",
+                salary: 78000,
+                location: "Hyderabad",
+                status: "On Leave",
+                createdAt: new Date().toISOString(),
+                joinedAt: "2022-06-28"
+            },
+            {
+                id: 9,
+                name: "Sneha Kulkarni",
+                role: "QA Engineer",
+                department: "Quality Assurance",
+                email: "sneha.k@example.com",
+                phone: "+91-9090909090",
+                salary: 48000,
+                location: "Pune",
+                status: "Active",
+                createdAt: new Date().toISOString(),
+                joinedAt: "2023-01-20"
+            },
+            {
+                id: 10,
+                name: "Vikram Singh",
+                role: "Product Manager",
+                department: "Product",
+                email: "vikram.singh@example.com",
+                phone: "+91-9123098765",
+                salary: 98000,
+                location: "Mumbai",
+                status: "Inactive",
+                createdAt: new Date().toISOString(),
+                joinedAt: "2020-05-10"
+            },
+            {
+                id: 11,
+                name: "Kavita Nair",
+                role: "UI Designer",
+                department: "Design",
+                email: "kavita.nair@example.com",
+                phone: "+91-8855664422",
+                salary: 46000,
+                location: "Chennai",
+                status: "Active",
+                createdAt: new Date().toISOString(),
+                joinedAt: "2022-08-12"
+            },
+            {
+                id: 12,
+                name: "Harsh Verma",
+                role: "Cloud Engineer",
+                department: "IT",
+                email: "harsh.verma@example.com",
+                phone: "+91-9988775544",
+                salary: 75000,
+                location: "Noida",
+                status: "Active",
+                createdAt: new Date().toISOString(),
+                joinedAt: "2021-09-18"
+            },
+            {
+                id: 13,
+                name: "Meena Reddy",
+                role: "Support Engineer",
+                department: "Customer Support",
+                email: "meena.reddy@example.com",
+                phone: "+91-9900112233",
+                salary: 42000,
+                location: "Hyderabad",
+                status: "Active",
+                createdAt: new Date().toISOString(),
+                joinedAt: "2023-03-10"
+            },
+            {
+                id: 14,
+                name: "Sameer Khan",
+                role: "Network Engineer",
+                department: "IT",
+                email: "sameer.khan@example.com",
+                phone: "+91-9988001122",
+                salary: 67000,
+                location: "Delhi",
+                status: "On Leave",
+                createdAt: new Date().toISOString(),
+                joinedAt: "2022-12-01"
+            },
+            {
+                id: 15,
+                name: "Ritika Jain",
+                role: "Content Writer",
+                department: "Marketing",
+                email: "ritika.jain@example.com",
+                phone: "+91-9000556611",
+                salary: 38000,
+                location: "Pune",
+                status: "Active",
+                createdAt: new Date().toISOString(),
+                joinedAt: "2023-07-14"
+            },
+            {
+                id: 16,
+                name: "Aakash Thakur",
+                role: "Data Analyst",
+                department: "Analytics",
+                email: "aakash.thakur@example.com",
+                phone: "+91-9445566778",
+                salary: 72000,
+                location: "Bangalore",
+                status: "Active",
+                createdAt: new Date().toISOString(),
+                joinedAt: "2022-03-22"
+            },
+            {
+                id: 17,
+                name: "Nisha Gupta",
+                role: "Business Analyst",
+                department: "Business",
+                email: "nisha.gupta@example.com",
+                phone: "+91-9332211000",
+                salary: 68000,
+                location: "Mumbai",
+                status: "Active",
+                createdAt: new Date().toISOString(),
+                joinedAt: "2021-12-30"
+            },
+            {
+                id: 18,
+                name: "Tarun Malhotra",
+                role: "System Administrator",
+                department: "IT",
+                email: "tarun.malhotra@example.com",
+                phone: "+91-9554433221",
+                salary: 60000,
+                location: "Chandigarh",
+                status: "Inactive",
+                createdAt: new Date().toISOString(),
+                joinedAt: "2020-10-14"
+            },
+            {
+                id: 19,
+                name: "Pooja Deshmukh",
+                role: "Research Analyst",
+                department: "R&D",
+                email: "pooja.d@example.com",
+                phone: "+91-9112334455",
+                salary: 54000,
+                location: "Nagpur",
+                status: "Active",
+                createdAt: new Date().toISOString(),
+                joinedAt: "2023-04-09"
+            },
+            {
+                id: 20,
+                name: "Sagar More",
+                role: "Technical Writer",
+                department: "Documentation",
+                email: "sagar.more@example.com",
+                phone: "+91-9776663344",
+                salary: 41000,
+                location: "Pune",
+                status: "Active",
+                createdAt: new Date().toISOString(),
+                joinedAt: "2022-11-25"
+            }
+
+        ];
+
+
+       let sortedEmployees = employees.slice();
+
+        
+
+        
+        function displayEmp(){
+            const employeesContainer = document.getElementById('employees-container');
+            
+            sortedEmployees.forEach(function(emp){
+            const tr = document.createElement('tr');
+
+            for(let key in emp){
+                const td = document.createElement('td');
+                if(key === 'createdAt'){
+                    const dateObj = new Date(emp[key]);
+                    const month = (dateObj.getMonth() + 1).toString().length===1 ? '0' + (dateObj.getMonth() + 1) : dateObj.getMonth() + 1;
+                    const date = (dateObj.getDate() + 1).toString().length===1 ? '0' + (dateObj.getDate() ) : dateObj.getDate();
+
+                    td.innerHTML = `${dateObj.getFullYear()}-${month}-${date}`;
+                }else if(key === 'status'){
+                    const span = document.createElement('span');
+                     span.innerHTML = emp[key];
+                    if(emp[key] === 'Active'){
+                        span.classList.add('active');
+                    }else{
+                        span.classList.add('inactive');
+                    }
+
+                     td.appendChild(span);
+
+                }else{
+                     td.innerHTML = emp[key];
+                }
+                    
+                tr.appendChild(td);
+            }
+
+            //Actions
+
+            const td = document.createElement('td');
+            const button = document.createElement("button");
+            button.innerHTML = 'View';
+            button.classList.add("view-btn");
+            button.addEventListener("click",function(){
+                
+                console.log(emp);
+                window.location.href = "./view-page.html";
+            });
+            td.appendChild(button);
+            tr.appendChild(td);
+
+            employeesContainer.appendChild(tr);
+
+        });
+
+        }
+        displayEmp();
+
+        function sortByName(event){
+            const selectedOrder = document.getElementById("sortByNameSelect").value;
+
+            
+
+            if(selectedOrder === 'Ascending Order'){
+                sortedEmployees =  employees.sort(function(a, b){
+                    if(a.name > b.name){
+                        return 1;
+                    }else if(a.name < b.name){
+                        return -1;
+                    }
+                    else{
+                        return 0;
+                    }
+                });
+
+                console.log(sortedEmployees);
+
+            }else if(selectedOrder === 'Descending Order'){
+                sortedEmployees =  employees.sort(function(a, b){
+                    if(a.name > b.name){
+                        return -1;
+                    }else if(a.name < b.name){
+                        return 1;
+                    }
+                    else{
+                        return 0;
+                    }
+                });
+
+            }else{
+                sortedEmployees = employees.slice();
+            }
+
+            const employeesContainer = document.getElementById('employees-container');
+            employeesContainer.innerHTML = '';
+            displayEmp();
+
+        }
+
+
+    
+
+    </script>
+</body>
+</html>
