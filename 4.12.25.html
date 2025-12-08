@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const sum = function(a,b){
+            const result = a+b;
+
+            return result;
+        }
+
+        console.log(sum(4,5));
+
+        console.log(window);
+
+
+        const user = {
+            id: 1,
+            username: "sakshi_shinde",
+            email: "sakshi@example.com",
+            role: "user",
+            password: "securePassword123",  // (In real apps, always hash passwords!)
+
+            createdAt: "2025-12-07T04:36:28.412Z",
+            isUserLoggedIn : true,
+            
+            getFormattedCreateAt : function(){
+                const dateObj = new Date(this.createdAt);
+                const date = dateObj.getDate().toString().length === 1 ? '0' + dateObj.getDate() : dateObj.getDate();
+                const month = dateObj.getMonth().toString().length === 1 ? '0' + dateObj.getMonth() : dateObj.getMonth();
+                return `${date}/${month}/${dateObj.getYear()}`;
+            },
+            getFormattedUserLogin : function(){
+                return this.isUserLoggedIn ? 'Logged In' : 'Not Logged In';
+            }
+
+        };
+
+        console.log(user.getFormattedCreateAt());
+        console.log(user.getFormattedUserLogin());
+
+
+        //IIFE
+
+        (function(){
+            //block of code.......
+            //API call to get date from api load of the page
+            console.log("In IIFE Function...");
+        }());
+
+        setInterval(function(){
+            console.log('In setInterval function.....');
+        }, 1000);
+
+        function callback(){
+            console.log('In setInterval function.....');
+        }
+        setInterval(callback, 1000);
+
+        setTimeout(function(){
+            console.log('In setTimeOutInterval function....');
+
+        }, 5000);
+
+        const employees = [
+                {
+                    id: 101,
+                    name: "Sakshi Shinde",
+                    email: "sakshi@example.com",
+                    role: "Developer",
+                    salary: 45000,
+                    createdAt: new Date().toISOString()
+                },
+                {
+                    id: 102,
+                    name: "Rohan Patil",
+                    email: "rohan@example.com",
+                    role: "Tester",
+                    salary: 38000,
+                    createdAt: new Date().toISOString()
+                },
+                {
+                    id: 103,
+                    name: "Priya Kulkarni",
+                    email: "priya@example.com",
+                    role: "Project Manager",
+                    salary: 75000,
+                    createdAt: new Date().toISOString()
+                },
+                {
+                    id: 104,
+                    name: "Amit Desai",
+                    email: "amit@example.com",
+                    role: "UI/UX Designer",
+                    salary: 42000,
+                    createdAt: new Date().toISOString()
+                },
+                {
+                    id: 105,
+                    name: "Neha Joshi",
+                    email: "neha@example.com",
+                    role: "Backend Developer",
+                    salary: 52000,
+                    createdAt: new Date().toISOString()
+                }
+            ];
+        for(let i = 0 ; i < employees.length ; i++){
+            console.log(employees[i]);
+        }
+
+        //forEach
+
+        employees.forEach(function(employee, index){
+            console.log(employee, index);
+
+        });
+
+        
+            
+
+
+
+
+
+    </script>
+    
+</body>
+</html>
